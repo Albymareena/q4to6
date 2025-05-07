@@ -1,0 +1,186 @@
+  <html>
+    <head>
+        <title>Testing</title>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <h3>Exercise 1:</h3>
+        <p>Create a function and button which allows a user to enter baggage weight and alerts them if 
+        the baggage exceeds the allowance of 15kg</p>
+        <input type="text" id="in">
+        <button onclick="c()">Press Me</button>
+
+        <h3>Exercise 2:</h3>
+        <p>Create a page with a button</p>
+        <p>When the user clicks, </p>
+        <p>
+            <p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
+                The sum of these multiples is 23.</p>
+            <p>Find the sum of all the multiples of 3 or 5 below 1000 and alert the user to the correct answer.</p>
+        </p>
+
+        <button onclick="sumOfMultiplesof3or5Below1000()">Press Me</button>
+
+        <h3>Exercise 3, Functions:</h3>
+        <p>Create a page with a button and three input boxes, labelled a, b and n</p>
+        <p>When the user clicks, </p>
+        <p>
+            <p>Create a function to return the sum of all the multiples of a or b below n</p>
+            <p>Call the function and alert the user to the correct answer when they press the button.</p>
+        </p>
+        <label for="a">a:</label>
+        <input type="text" id="a">
+
+        <label for="b">b:</label>
+        <input type="text" id="b">
+
+        <label for="n">n:</label>
+        <input type="text" id="n">
+
+        <button onclick="findSum()">Find Sum</button>
+
+        <h3>Exercise 4, Arrays: f4 should take 2 integer and 1 array parameters and return an integer.</h3>
+        <p>Create a function f4 to return the sum of all the multiples of a or b in array l</p>
+        <p>(Exercise 4.1) Create a page with a button and three input boxes, labelled a, b and l, l should be a large input</p>
+        <p>Call the function f4 in the function called by onClick, and alert the user to the 
+            returned answer when they press the button.</p>  
+        
+        <label for="a1">a:</label>
+        <input type="text" id="a1" style="width: 50px;" >
+
+        <label for="b1">b:</label>
+        <input type="text" id="b1" style="width: 50px;" >
+
+        <label for="l">l:</label>
+        <input type="text" id="l" style="width: 400px;" >
+
+        <button onclick="ex4()">Find Sum</button>
+            
+        <h3>Exercise 5, Arrays: f5 should take array parameters and return an integer.</h3>
+        <p>Create a function f5 to return the sum of all the multiples of factors in a 
+            found in in l (a and l should be arrays of integers, a is of length 2)</p>
+        <p>(Exercise 5.1) Create a page with a button and two wide input boxes, labelled a and l</p>
+        <p>Call the function f5 in the function called by onClick, and alert the user to the 
+            returned answer when they press the button.</p>
+        </p>
+        <p>You may find the split function useful for creating arrays from the strings entered: <a href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
+
+        <label for="a2">a:</label>
+        <input type="text" id="a2" style="width: 150px;" >
+
+        <label for="l1">l:</label>
+        <input type="text" id="l1" style="width: 250px;" >
+
+        <button onclick="ex5()">Find Sum</button>
+
+        <h3>Exercise 6, Arrays: f6 should take array parameters and return an integer.</h3>
+        <p>Create a function f6 to return the sum of all the multiples of factors in a 
+            found in in l (a and l should be arrays of integers)</p>
+        <p>(Exercise 6.1) Create a page with a button and two wide input boxes, labelled a and l</p>
+        <p>Call the function f6 in the function called by onClick, and alert the user to the 
+            returned answer when they press the button.</p>
+        </p>
+        <p>You may find the split function useful for creating arrays from the strings entered: <a href="https://www.w3schools.com/jsref/jsref_split.asp">Split</a></p>
+
+        <label for="a3">a:</label>
+        <input type="text" id="a3" style="width: 250px;" >
+
+        <label for="l3">l:</label>
+        <input type="text" id="l3" style="width: 250px;" >
+
+        <button onclick="ex6()">Find Sum</button>
+    </body>
+</html>
+[9:53 am, 6/5/2025] Nithin K Thomas Dbs: let c=() => {
+    let i = document.getElementById("in").value;
+    if (parseInt(i) > 15) {
+        alert("Baggage is overweight")
+    }
+}
+
+let sumOfMultiplesof3or5Below1000 = () => {
+    let sum = sumOfMultiplesOfAorBBelowN(3, 5, 1000);
+    alert(sum);
+}
+
+let sumOfMultiplesOfAorBBelowN = (a, b, n) => {
+    let sum = 0;
+    for (let i = 1; i < n; i++) {
+        if (i % a === 0 || i % b === 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+
+let findSum = () => {
+    let a = document.getElementById('a').value;
+    let b = document.getElementById('b').value;
+    let n = document.getElementById('n').value;
+
+    let sum = sumOfMultiplesOfAorBBelowN(a, b, n);
+    alert(sum);
+}
+
+function f4(a, b, l) {
+    let sum = 0;
+    for (let i = 0; i < l.length; i++) {
+        if (l[i] % a === 0 || l[i] % b === 0) {
+            sum = sum + parseInt(l[i]);
+        }
+    }
+    return sum;
+
+}
+
+let ex4 = () => {
+    let a = parseInt(document.getElementById('a1').value);
+    let b = parseInt(document.getElementById('b1').value);
+    let l = document.getElementById('l').value.split(",");
+
+    let sum = f4(a, b, l);
+    alert(sum);
+}
+
+let f5 = (multiples, numbers) => {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % multiples[0] === 0 || numbers[i] % multiples[1] === 0) {
+            sum = sum + parseInt(numbers[i]);
+        }
+    }
+    return sum;
+    // return numbers.filter( (x) => x % multiples[0] === 0 || x % multiples[1] === 0)
+    //         .reduce( (acc, x) => acc + parseInt(x), 0);
+}
+
+let ex5 = () => {
+    let multiples = document.getElementById('a2').value.split(",");
+    let numbers = document.getElementById('l1').value.split(",");
+    if (multiples.length != 2) {
+        return;
+    }
+    // alert(f6(multiples, numbers));
+    alert(f5(multiples, numbers));
+}
+
+let f6 = (multiples, numbers) => {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = 0; j < multiples.length; j++) {
+            if (numbers[i] % multiples[j] === 0) {
+                sum = sum + parseInt(numbers[i]);
+                break;
+            }
+        }
+    }
+    return sum;
+    // return numbers.filter( (x) => multiples.some( multiple => x % multiple === 0))
+    //               .reduce( (acc, x) => acc + parseInt(x), 0);
+}
+
+let ex6 = () => {
+    let multiples = document.getElementById('a3').value.split(",");
+    let numbers = document.getElementById('l3').value.split(",");
+    alert(f6(multiples, numbers));
+}
